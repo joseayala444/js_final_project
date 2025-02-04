@@ -1,0 +1,35 @@
+.navbar {
+    position: fixed; /* Navbar fija en la parte superior */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #333;
+    color: white;
+    padding: 15px 20px;
+    display: flex; /* Flexbox para organizar los elementos */
+    justify-content: space-between; /* Separa logo y elementos */
+    align-items: center; /* Alinea verticalmente */
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar ul li {
+    margin: 0 20px; /* Espaciado entre elementos */
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+.logo img {
+    width: 40px; /* Tamaño del logo */
+    height: 40px;
+}
