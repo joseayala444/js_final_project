@@ -4,26 +4,43 @@
     <link rel="stylesheet" href="travelRecommendation.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Nav Bar</title>
+    <title>Travel Recommendation </title>
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="logo">
-            <img src="https://img.icons8.com/bubbles/100/airport.png" alt="airport"/>
+        <div>
+            <div class="logo">
+                <ul>
+                    <li><img src="https://img.icons8.com/bubbles/100/airport.png" alt="airport"/></li>
+                    <li><h1>TravelBloom</h1></li>
+                </ul>
+            </div>
         </div>
-        <ul>
-            <li><a href="#" id="homeBtn">Home</a></li>
-            <li><a href="#" id="aboutusBtn">About Us</a></li>
-            <li><a href="#" id="contactusBtn">Contact Us</a></li>
-        </ul>
-    </nav>
 
-    <div class="content">
-        <h1>Bienvenido a mi sitio web</h1>
-        <p>Este es un ejemplo de una top navbar simple con HTML y CSS.</p>
-    </div>
-    
-    <script src="./travelRecommendation.js"></script>
+        <div>
+            <ul>
+                <li><a href="#" id="homeBtn">Home</a></li>
+                <li><a href="#" id="aboutusBtn">About Us</a></li>
+                <li><a href="#" id="contactusBtn">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="search_bar">
+            <ul>
+                <li><input placeholder="Buscar" type="text" id="search"></input>
+                    <button class="book_now" onclick="search()">search</button> </li>
+            </ul>
+        </div>
+    </nav>
+        <div class="content">
+            <h1>EXPLORE DREAM DESTINATION</h1>
+            <p>"It encourages exploration of unfamiliar territories, 
+            embracing diverse cultures and landscapes, 
+            while pursuing the desired destination that 
+            captivates the heart and ignites a sense of wonder."</p>
+             <button class="book_now">BOOK NOW</button>
+        </div>
+        <div id="results"></div>
+<script src="./travelRecommendation.js"></script>
 </body>
 </html>
