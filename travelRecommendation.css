@@ -41,16 +41,7 @@ body {
     background-repeat: no-repeat; /* Evita que la imagen se repita */
     height: 100vh;
 }
-.content {
-    text-align: left;
-    color:white;
-    padding-top: 30%;
-    padding-right: 50%;
-    padding-left: 8%;
-    font-size: large;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700; /* 700 es negrita */
-}
+
 .book_now {
     background-color: black;
       color: white;
@@ -75,7 +66,34 @@ body {
   .search_bar input {
     padding: 8px 12px; /* Añade padding para que el input tenga un buen tamaño */
     border-radius: 15px; /* Borde redondeado */
-    border: 1px solid #ccc; /* Añadir borde si lo deseas */
+    border: 1px solid #5622926e; /* Añadir borde si lo deseas */
     outline: none; /* Eliminar el borde azul que aparece al hacer clic en el input */
     font-size: 16px; /* Ajusta el tamaño de la fuente */
 }
+.container {
+    display: flex; /* Hace que los elementos internos estén en línea */
+    align-items: center; /* Alinea verticalmente */
+    justify-content: space-between; /* Espaciado entre los elementos */
+    padding: 5%;
+}
+
+.content {
+    width: 50%; /* Ajusta el ancho */
+    padding: 2%;
+}
+
+.result {
+    width: 50%; /* Ajusta el ancho */
+    min-height: 300px; /* Da una altura mínima */
+    background-color: rgba(29, 27, 27, 0.603); /* Solo para visualizar */
+    color: white;
+    padding: 20px;
+    display: none;
+    align-items: center;
+}
+.result-image {
+    width: 200px; /* Ajusta al tamaño que desees */
+    height: 200px; /* Ajusta también la altura si es necesario */
+    object-fit: cover; /* Esto asegurará que la imagen se ajuste sin distorsionarse */
+}
+
