@@ -17,52 +17,70 @@ function aboutus() {
 document.getElementById("aboutusBtn").addEventListener("click", aboutus);
 
 function search() {
-    const searchTerm = document.getElementById("search").value.toLowerCase();  // Obtener el término de búsqueda y ponerlo en minúsculas
-    fetch('travelRecommendation.json')  // Cargar el archivo JSON
+    const searchTerm = document.getElementById("search").value.trim().toLowerCase();  // Obtener el término de búsqueda y limpiar espacios
+    const resultsDiv = document.getElementById("results");
+
+    // Si el input está vacío, ocultamos los resultados y salimos de la función
+    if (!searchTerm) {
+        resultsDiv.innerHTML = "";
+        resultsDiv.style.display = "none";
+        return;
+    }
+
+    fetch('travelRecommendation.json')
         .then(response => response.json())
         .then(data => {
-            const resultsDiv = document.getElementById("results");
             resultsDiv.innerHTML = "";  // Limpiar los resultados anteriores
+            let found = false;  // Variable para saber si encontramos algo
 
-            if (searchTerm === "countries" || searchTerm === "temples" || searchTerm === "beaches") {
-                const sectionData = data[searchTerm];  // Obtener la sección correspondiente del JSON
+            // Si el término coincide con una lista completa
+            if (data[searchTerm]) {
+                found = true;
+                const sectionData = data[searchTerm];
                 const sectionDiv = document.createElement("div");
 
-                // Si buscamos "countries", necesitamos acceder a las ciudades dentro de cada país
-                if (searchTerm === "countries") {
-                    sectionData.forEach(country => {
-                        // Iterar sobre las ciudades de cada país
-                        country.cities.forEach(city => {
-                            sectionDiv.innerHTML += `
-                                <div class="result-item">
-                                    <img src="${city.imageUrl}" alt="${city.name}" class="result-image">
-                                    <p><strong>${city.name}, ${country.name}</strong>: ${city.description}</p>
-                                </div>
-                            `;
-                        });
-                    });
-                } else {
-                    // Para "temples" y "beaches", acceder directamente a los elementos
-                    sectionData.forEach(item => {
-                        sectionDiv.innerHTML += `
-                            <div class="result-item">
-                                <img src="${item.imageUrl}" alt="${item.name}" class="result-image">
-                                <p><strong>${item.name}</strong>: ${item.description}</p>
+                sectionData.forEach(item => {
+                    sectionDiv.innerHTML += `
+                        <div class="result-item">
+                            <img src="${item.imageUrl}" alt="${item.name}" class="result-image">
+                            <div class="result-text">
+                                <strong>${item.name}</strong>
+                                <p>${item.description || "Sin descripción"}</p>
                             </div>
-                        `;
-                    });
-                }
+                        </div>
+                    `;
+                });
 
                 resultsDiv.appendChild(sectionDiv);
-                resultsDiv.style.display = "block"; // Mostrar resultados
             } else {
-                resultsDiv.innerHTML = "<p>No se encontró ninguna coincidencia.</p>";
-                resultsDiv.style.display = "block"; // Mostrar mensaje de error
+                // Buscar dentro de cada lista si hay coincidencia con el input
+                Object.keys(data).forEach(category => {
+                    data[category].forEach(item => {
+                        if (item.name.toLowerCase().includes(searchTerm)) {
+                            found = true;
+                            const itemDiv = document.createElement("div");
+                            itemDiv.classList.add("result-item");
+
+                            itemDiv.innerHTML = `
+                                <img src="${item.imageUrl}" alt="${item.name}" class="result-image">
+                                <div class="result-text">
+                                    <strong>${item.name}</strong>
+                                    <p>${item.description || "Sin descripción"}</p>
+                                </div>
+                            `;
+
+                            resultsDiv.appendChild(itemDiv);
+                        }
+                    });
+                });
             }
 
-            // Si después de todo, sigue vacío, lo ocultamos
-            if (resultsDiv.innerHTML.trim() === "") {
-                resultsDiv.style.display = "none";
+            // Mostrar u ocultar resultados dependiendo de si encontramos coincidencias
+            if (found) {
+                resultsDiv.style.display = "grid";
+            } else {
+                resultsDiv.innerHTML = "<p>No se encontró ninguna coincidencia.</p>";
+                resultsDiv.style.display = "block";
             }
         })
         .catch(error => {

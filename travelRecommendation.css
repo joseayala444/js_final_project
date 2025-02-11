@@ -96,4 +96,54 @@ body {
     height: 200px; /* Ajusta también la altura si es necesario */
     object-fit: cover; /* Esto asegurará que la imagen se ajuste sin distorsionarse */
 }
+/* 📌 Contenedor de resultados */
+#results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajusta columnas automáticamente */
+    gap: 20px; /* Espacio entre elementos */
+    padding: 20px;
+}
+
+/* 📌 Cada elemento de la lista */
+.result-item {
+    background-color: #f8f9fa; /* Color de fondo suave */
+    border-radius: 10px; /* Bordes redondeados */
+    overflow: hidden; /* Evita que la imagen sobresalga */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+    transition: transform 0.2s ease-in-out;
+}
+
+.result-item:hover {
+    transform: scale(1.03); /* Efecto de zoom al pasar el mouse */
+}
+
+/* 📌 Imagen dentro del grid */
+.result-image {
+    width: 100%;  /* Ocupar todo el ancho */
+    height: auto; /* Mantener la proporción */
+    display: block; /* Evitar espacios extra alrededor */
+}
+
+/* 📌 Contenedor del texto */
+.result-text {
+    padding: 15px;
+    text-align: center;
+}
+
+/* 📌 Título de la ciudad o lugar */
+.result-text strong {
+    font-size: 20px; /* Tamaño grande */
+    color: #333; /* Color oscuro */
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* 📌 Descripción */
+.result-text p {
+    font-size: 16px; /* Tamaño legible */
+    color: #555; /* Color más suave */
+    line-height: 1.5; /* Espaciado entre líneas */
+    margin: 0;
+}
 
