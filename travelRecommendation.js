@@ -16,6 +16,28 @@ function aboutus() {
 
 document.getElementById("aboutusBtn").addEventListener("click", aboutus);
 
+document.addEventListener("DOMContentLoaded", function () {
+    // Selecciona el botón
+    const submitButton = document.querySelector(".con");
+
+    submitButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Evita que la página se recargue
+
+        // Selecciona los inputs
+        const nameInput = document.getElementById("text");
+        const emailInput = document.getElementById("email");
+        const messageInput = document.getElementById("message");
+
+        // Limpia los campos
+        nameInput.value = "";
+        emailInput.value = "";
+        messageInput.value = "";
+
+        // Muestra el mensaje de agradecimiento
+        alert("¡Gracias por tu mensaje!");
+    });
+});
+
 function search() {
     const searchTerm = document.getElementById("search").value.trim().toLowerCase();  // Obtener el término de búsqueda y limpiar espacios
     const resultsDiv = document.getElementById("results");

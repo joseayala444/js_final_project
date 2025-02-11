@@ -147,3 +147,63 @@ body {
     margin: 0;
 }
 
+.form-container {
+    width: 50%; /* Ocupa la mitad derecha */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    padding: 20px;
+    background-color: #351f1f5b; /* Fondo blanco para contraste */
+    box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra en el borde izquierdo */
+}
+
+.form-container h2 {
+    margin-bottom: 15px;
+    font-size: 36px;
+    
+}
+
+label {
+    display: block;
+    font-size: 27px;
+    margin-top: 10px;
+}
+
+input, textarea {
+    width: 80%; /* Ajusta el ancho de los inputs */
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #fdfdfd;
+    background-color: rgba(216, 211, 211, 0.705);
+    border-radius: 6px;
+}
+
+textarea {
+    height: 100px;
+    resize: none; /* Evita que se redimensione */
+}
+
+.con {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #1013167e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.con:hover {
+    background-color: #414346;
+}
+.contatus {
+    display: flex;
+    justify-content: center;  /* Centrar horizontalmente */
+    align-items: center;  /* Centrar verticalmente */
+    width: 100%; /* Para que ocupe toda la pantalla */
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+}
+
